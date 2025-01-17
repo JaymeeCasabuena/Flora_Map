@@ -4,12 +4,42 @@
 @tailwind components;
 @tailwind utilities;
 
-.jumbotron {
-  font-size: 7em;
+:root {
+  --background: #171717;
+  --foreground: #ffffff;
+  --primary-color: #ffc505;
+  --secondary-color: #1b631b;
+}
+
+.h1 {
   font-family: "Barlow", serif;
 }
 
 .leaf {
   width: 20em;
   height: 30em;
+}
+
+.leaf-small {
+  width: 15em;
+  height: 10em;
+}
+
+.btn {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.btn:hover {
+  transition: 0.3s ease;
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.header h1 {
+  color: var(--secondary-color);
+}
+
+.line {
+  background-color: var(--primary-color);
 }
