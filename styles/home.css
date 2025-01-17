@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.jumbotron {
+  font-size: 7em;
+  font-family: "Barlow", serif;
+}
+
+.leaf {
+  width: 20em;
+  height: 30em;
+}
