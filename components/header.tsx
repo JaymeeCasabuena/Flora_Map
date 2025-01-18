@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-import "../../styles/globals.css";
+import "../styles/globals.css";
 
 const navBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,9 +51,9 @@ const navBar = () => {
           <p>Pollinate</p>
         </div>
         <div className="menu-items flex justify-center gap-20 hidden sm:flex">
-          <h4>Home</h4>
-          <h4>About</h4>
-          <h4>Contact</h4>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
         </div>
         <div className="hidden sm:flex">
           <button className="join_btn flex flex-row items-center gap-2 px-8 py-3 rounded-full text-white">
