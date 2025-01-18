@@ -96,7 +96,9 @@ export default function Home() {
       <div className="contact flex flex-row w-full h-screen" id="contact">
         {/* Form Section */}
         <div className="form w-1/2 px-8 py-12 text-white flex flex-col justify-center">
-          <h2 className="text-4xl font-semibold mb-4">Let's work together</h2>
+          <h2 className="text-4xl font-semibold mb-4">
+            {"Let's work together"}
+          </h2>
           <p className="text-sm mb-8">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             Exercitationem sapiente id vitae atque sunt consequuntur ex illum

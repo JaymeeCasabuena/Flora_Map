@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import "../styles/globals.css";
 
-const navBar = () => {
+const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -152,4 +152,4 @@ const navBar = () => {
   );
 };
 
-export default navBar;
+export default NavBar;
