@@ -32,6 +32,17 @@ html {
   font-size: 1.4em;
 }
 
+.btn {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.btn:hover {
+  transition: 0.3s ease;
+  background-color: var(--secondary-color);
+  color: white;
+}
+
 .join_btn {
   background-color: transparent;
   border: 2px solid var(--secondary-color);
@@ -48,13 +59,13 @@ html {
 
 /* Hover menu items */
 
-a {
+.menu-items a {
   position: relative;
   display: inline-block;
   padding-bottom: 0.3em;
 }
 
-a::after {
+.menu-items a::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -65,7 +76,7 @@ a::after {
   transition: 0.3s ease;
 }
 
-a:hover::after {
+.menu-items a:hover::after {
   width: 100%;
 }
 
