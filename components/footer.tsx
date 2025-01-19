@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 
-const footer = () => {
+const Footer = () => {
   return (
     <div className="footer w-full h-24 flex flex-row justify-between items-center px-20">
       <p className="text-xs">© 2025 Pollinate, Inc. All rights reserved.</p>
@@ -86,4 +86,4 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default Footer;
