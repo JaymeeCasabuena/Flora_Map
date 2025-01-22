@@ -19,7 +19,7 @@ const Login = () => {
   return (
     <div className="w-full h-screen">
       <div className="flex flex-row justify-between items-center p-5">
-        <div className="flex items-center gap-1">
+        <div className="logo flex items-center gap-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
@@ -67,7 +67,9 @@ const Login = () => {
       </div>
       <div className="flex justify-center mt-52">
         <div className="max-w-md left-1/2 p-6">
-          <h1 className="text-3xl font-bold text-center mb-6">Pollinate</h1>
+          <h1 className="text-3xl font-bold text-center mb-9">
+            Welcome to Pollinate!
+          </h1>
           {errorMessage && (
             <div className="bg-red-500 text-white p-3 mb-4 rounded text-center">
               {errorMessage}
