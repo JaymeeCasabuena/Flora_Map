@@ -44,7 +44,7 @@ export default function Home() {
               Pollinate aims to foster a community of environmentally-conscious
               individuals dedicated to making a positive impact on the planet.
             </p>
-            <Link href="/login">
+            <Link href="/auth">
               <button className="btn w-40 px-8 py-3 mt-5 rounded-full font-semibold text-white">
                 Get Started
               </button>
