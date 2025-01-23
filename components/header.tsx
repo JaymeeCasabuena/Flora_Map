@@ -125,24 +125,24 @@ const NavBar = () => {
 
       {/* Mobile menu items */}
       {isOpen && (
-        <div className="sm:hidden" id="mobile-menu">
+        <div className="sm:hidden bg-gray-900" id="mobile-menu">
           <div className="space-y-1 px-2 pb-3 pt-2">
             <a
-              href="#"
-              className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+              href="#home"
+              className="block px-3 py-2 text-base font-medium text-white"
               aria-current="page"
             >
               Home
             </a>
             <a
-              href="#"
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              href="#about"
+              className="block px-3 py-2 text-base font-medium text-white"
             >
               About
             </a>
             <a
-              href="#"
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              href="#contact"
+              className="block px-3 py-2 text-base font-medium text-white"
             >
               Contact Us
             </a>

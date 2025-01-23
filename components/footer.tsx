@@ -2,7 +2,7 @@ import "../styles/globals.css";
 
 const Footer = () => {
   return (
-    <div className="footer w-full h-24 flex flex-row justify-between items-center px-20">
+    <div className="footer w-full h-24 flex flex-col-reverse md:flex-row justify-between items-center px-20 pt-5 md:pt-0">
       <p className="text-xs">© 2025 Pollinate, Inc. All rights reserved.</p>
       <div className="social-links flex space-x-9 justify-center items-center text-white">
         {/* LinkedIn */}

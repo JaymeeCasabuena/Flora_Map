@@ -18,6 +18,7 @@ html {
   background: url(/background.jpg) lightgray 50% / cover no-repeat;
   font-family: "Recursive", sans-serif;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 .navBar {
