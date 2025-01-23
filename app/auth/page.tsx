@@ -6,7 +6,7 @@ import "../../styles/globals.css";
 
 const Login = () => {
   const router = useRouter();
-
+  const [errorMessage, setErrorMessage] = useState("");
   const [isSignUpActive, setIsSignUpActive] = useState(false);
   const [loginFormData, setLoginFormData] = useState({
     email: "",
@@ -17,7 +17,6 @@ const Login = () => {
     regEmail: "",
     regPassword: "",
   });
-  const [errorMessage, setErrorMessage] = useState("");
 
   const toggleForm = () => setIsSignUpActive(!isSignUpActive);
 
@@ -39,8 +38,8 @@ const Login = () => {
         const error = await res.json();
         setErrorMessage(error.error);
       }
-    } catch (error) {
-      setErrorMessage("An unexpected error occurred");
+    } catch (error: any) {
+      setErrorMessage(error.message);
     }
   };
 
@@ -62,8 +61,8 @@ const Login = () => {
         const error = await res.json();
         setErrorMessage(error.error);
       }
-    } catch (error) {
-      setErrorMessage("An unexpected error occurred");
+    } catch (error: any) {
+      setErrorMessage(error.message);
     }
   };
 
