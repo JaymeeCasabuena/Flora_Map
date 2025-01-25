@@ -2,12 +2,17 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Alert from "@/components/alert";
+import z from "zod";
+import { SignupFormSchema, LoginFormSchema } from "@/lib/zodSchema";
+import { SignIn } from "@/components/auth-components/auth-components";
 import "../../styles/globals.css";
 
 const Login = () => {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState("");
   const [isSignUpActive, setIsSignUpActive] = useState(false);
+  const [isSuccessful, setIsSucessful] = useState(true);
   const [loginFormData, setLoginFormData] = useState({
     email: "",
     password: "",
@@ -23,23 +28,29 @@ const Login = () => {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      const result = SignupFormSchema.parse({
+        name: registerFormData.name,
+        email: registerFormData.regEmail,
+        password: registerFormData.regPassword,
+      });
+
       const res = await fetch("/api/register", {
         method: "POST",
-        body: JSON.stringify({
-          name: `${registerFormData.name}`,
-          email: registerFormData.regEmail,
-          password: registerFormData.regPassword,
-        }),
+        body: JSON.stringify(result),
       });
 
       if (res.ok) {
         setIsSignUpActive(false);
+        setIsSucessful(true);
       } else {
         const error = await res.json();
         setErrorMessage(error.error);
       }
-    } catch (error: any) {
-      setErrorMessage(error.message);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        setIsSucessful(false);
+        setErrorMessage(error.errors[0].message);
+      }
     }
   };
 
@@ -47,22 +58,28 @@ const Login = () => {
     e.preventDefault();
 
     try {
+      const result = LoginFormSchema.parse({
+        email: loginFormData.email,
+        password: loginFormData.password,
+      });
+
       const res = await fetch("/api/login", {
         method: "POST",
-        body: JSON.stringify({
-          email: loginFormData.email,
-          password: loginFormData.password,
-        }),
+        body: JSON.stringify(result),
       });
 
       if (res.ok) {
+        setIsSucessful(true);
         router.push("/dashboard");
       } else {
         const error = await res.json();
         setErrorMessage(error.error);
       }
     } catch (error: any) {
-      setErrorMessage(error.message);
+      if (error instanceof z.ZodError) {
+        setIsSucessful(false);
+        setErrorMessage(error.errors[0].message);
+      }
     }
   };
 
@@ -120,13 +137,10 @@ const Login = () => {
           <h1 className="text-3xl font-bold text-center mb-9">
             Welcome to Pollinate!
           </h1>
-          {errorMessage && (
-            <div className="bg-red-500 text-white p-3 mb-4 rounded text-center">
-              {errorMessage}
-            </div>
-          )}
           {isSignUpActive ? (
             <form onSubmit={onSubmit}>
+              {errorMessage && !isSuccessful && <Alert>{errorMessage}</Alert>}
+
               <input
                 type="text"
                 name="name"
@@ -175,6 +189,8 @@ const Login = () => {
             </form>
           ) : (
             <form onSubmit={onLogin}>
+              {errorMessage && !isSuccessful && <Alert>{errorMessage}</Alert>}
+
               <input
                 type="email"
                 name="email"
