@@ -32,5 +32,5 @@ export async function POST(request: NextRequest) {
     },
   });
 
-  return NextResponse.json(user);
+  return NextResponse.json(user.id);
 }
