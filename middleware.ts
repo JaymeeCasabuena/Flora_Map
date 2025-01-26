@@ -7,8 +7,9 @@ const publicRoutes = ["/", "/auth"];
 
 export { default } from "next-auth/middleware";
 
+//The matcher determines where the middleware would do it's checks
 export const config = {
-  matcher: ["/dashboard"],
+  matcher: ["/dashboard", "/auth"],
 };
 
 export async function middleware(req: NextRequest) {
