@@ -7,6 +7,7 @@ import { signUp, logIn } from "../actions/auth-actions";
 import { useActionState } from "react";
 import { LoadingSpinner } from "@/components/spinner/spinner";
 import Link from "next/link";
+import SignIn from "@/components/auth-components/auth-components";
 import "../../styles/globals.css";
 
 const Login = () => {
@@ -117,6 +118,8 @@ const Login = () => {
               </button>
             </form>
           )}
+          <h1 className="text-center mt-3">OR</h1>
+          {!isSignUpActive && <SignIn></SignIn>}
         </div>
       </div>
     </div>
