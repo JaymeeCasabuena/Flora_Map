@@ -1,26 +1,49 @@
-import NextAuth from "next-auth";
 import { NextAuthOptions } from "next-auth";
-import { getServerSession } from "next-auth";
-import Github from "next-auth/providers/github";
+import Google from "next-auth/providers/google";
 import { PrismaClient } from "@prisma/client";
 import { createSession } from "../../../../lib/session";
+import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 const authOptions: NextAuthOptions = {
   providers: [
-    Github({
-      clientId:
-        process.env.NODE_ENV === "production"
-          ? (process.env.GITHUB_CLIENT_ID as string)
-          : (process.env.GITHUB_CLIENT_ID_DEV as string),
-      clientSecret:
-        process.env.NODE_ENV === "production"
-          ? (process.env.GITHUB_CLIENT_SECRET as string)
-          : (process.env.GITHUB_CLIENT_SECRET_DEV as string),
+    Google({
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
+
+  callbacks: {
+    async signIn({ user }) {
+      let userExists = await prisma.user.findUnique({
+        where: { email: user.email as string },
+      });
+
+      if (!userExists) {
+        const hashedPassword = await bcrypt.hash(user.id, 10);
+        userExists = await prisma.user.create({
+          data: {
+            email: user.email as string,
+            name: user.name as string,
+            password: hashedPassword,
+          },
+        });
+      }
+
+      if (userExists) {
+        await createSession(userExists.id);
+      }
+
+      return true;
+    },
+
+    async redirect({ url, baseUrl }) {
+      if (url === "/auth" || !url.startsWith(baseUrl)) {
+        return baseUrl + "/dashboard";
+      }
+      return url;
+    },
+  },
 };
 
-const getSession = () => getServerSession(authOptions);
-
-export { authOptions, getSession };
+export { authOptions };
