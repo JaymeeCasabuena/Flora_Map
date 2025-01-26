@@ -5,7 +5,13 @@ import { cookies } from "next/headers";
 const protectedRoutes = ["/dashboard"];
 const publicRoutes = ["/", "/auth"];
 
-export default async function middleware(req: NextRequest) {
+export { default } from "next-auth/middleware";
+
+export const config = {
+  matcher: ["/dashboard"],
+};
+
+export async function middleware(req: NextRequest) {
   // 2. Check if the current route is protected or public
   const path = req.nextUrl.pathname;
   const isProtectedRoute = protectedRoutes.includes(path);
