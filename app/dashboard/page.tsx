@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react";
 import Logo from "@/components/logo/logo";
 import { logOut } from "../actions/auth-actions";
-import CustomMap from "@/components/custom-map/map";
+import CustomMap from "@/app/dashboard/_map/map";
 import { LoadingSpinner } from "@/components/spinner/spinner";
-import AddMarkerForm from "@/components/map-marker/add-map-marker";
+import AddMarkerForm from "@/app/dashboard/_markers/add-map-marker";
+import "../../styles//dashboard.css";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -23,7 +24,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="dashboard flex flex-col">
       <div className="flex flex-row justify-between items-center p-5">
         <Logo />
         <button
@@ -38,11 +39,11 @@ const Dashboard = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <main className="border-2 flex flex-row w-full">
-          <div className="map w-1/2">
+        <main className="flex flex-row gap-7 w-full py-24">
+          <div className="map w-2/3 ms-5">
             <CustomMap />
           </div>
-          <div className="details w-1/2">
+          <div className="details rounded-2xl w-1/3 me-5">
             <AddMarkerForm />
           </div>
         </main>

@@ -30,6 +30,16 @@ export const LoginFormSchema = z.object({
     .trim(),
 });
 
+export const AddMarkerFormSchema = z.object({
+  name: z
+    .string()
+    .min(10, { message: "Location name must be at least 10 characters long." })
+    .trim(),
+  note: z.string().optional(),
+  location: z.string().nonempty({ message: "Location is required." }),
+  date: z.string().optional(),
+});
+
 export type SignupFormState =
   | {
       errors?: {
@@ -48,5 +58,19 @@ export type LoginFormState =
         password?: string[];
       };
       message?: string;
+    }
+  | undefined;
+
+export type AddMarkerFormState =
+  | {
+      errors?: {
+        name?: string[];
+        location?: string[];
+        date?: string[];
+        note?: string[];
+      };
+      message?: string;
+      url?: string;
+      success?: boolean;
     }
   | undefined;
