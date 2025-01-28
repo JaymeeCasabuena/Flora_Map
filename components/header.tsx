@@ -56,7 +56,7 @@ const NavBar = () => {
         </div>
         <div className="hidden sm:flex">
           <Link href="/auth">
-            <button className="join_btn flex flex-row items-center gap-2 px-8 py-3 rounded-full text-white">
+            <button className="secondary-btn flex flex-row items-center gap-2 px-8 py-3 rounded-full text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
