@@ -7,6 +7,8 @@ export const AddressAutoComplete = () => {
   const [selectedPlace, setSelectedPlace] =
     useState<google.maps.places.PlaceResult | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const latRef = useRef<HTMLInputElement>(null);
+  const lngRef = useRef<HTMLInputElement>(null);
   const places = useMapsLibrary("places");
 
   useEffect(() => {
@@ -21,7 +23,16 @@ export const AddressAutoComplete = () => {
 
     placeAutocomplete.addListener("place_changed", () => {
       const place = placeAutocomplete.getPlace();
+
       setSelectedPlace(place);
+
+      if (place.geometry && place.geometry.location) {
+        const lat = place.geometry.location.lat();
+        const lng = place.geometry.location.lng();
+
+        if (latRef.current) latRef.current.value = lat.toString();
+        if (lngRef.current) lngRef.current.value = lng.toString();
+      }
     });
   }, [placeAutocomplete]);
 
@@ -33,6 +44,9 @@ export const AddressAutoComplete = () => {
         ref={inputRef}
         placeholder="Search for a place"
       />
+      {/* Hidden inputs for latitude and longitude */}
+      <input type="hidden" name="lat" ref={latRef} />
+      <input type="hidden" name="lng" ref={lngRef} />
     </div>
   );
 };
