@@ -14,8 +14,9 @@ model Location {
   id         String     @default(cuid()) @id
   name       String
   note       String?
+  location   String?
   coord      String?
-  published  Boolean    @default(false)
+  date       DateTime?
   author     User?      @relation(fields: [authorId], references: [id])
   authorId   String?
   images     Image[]   
