@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function FileUploadForm() {
   const [filePreview, setFilePreview] = useState<string | null>(null);
@@ -46,10 +47,11 @@ export default function FileUploadForm() {
               </svg>
             </button>
             {/* File Preview */}
-            <img
+            <Image
               src={filePreview}
               alt="File Preview"
-              className="w-56 h-24 object-cover rounded"
+              fill={true}
+              className="w-56 h-24 object-cover object-cover rounded"
             />
           </>
         ) : (

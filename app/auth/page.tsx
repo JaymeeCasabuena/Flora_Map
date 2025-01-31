@@ -118,8 +118,12 @@ const Login = () => {
               </button>
             </form>
           )}
-          <h1 className="text-center mt-3">OR</h1>
-          {!isSignUpActive && <SignIn></SignIn>}
+          {!isSignUpActive && (
+            <>
+              <h1 className="text-center mt-3">OR</h1>
+              <SignIn />
+            </>
+          )}
         </div>
       </div>
     </div>
