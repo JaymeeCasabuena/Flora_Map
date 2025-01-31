@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Nav from "@/components/navbars/nav";
 import Alert from "@/components/alert";
-import Logo from "@/components/logo/logo";
 import { signUp, logIn } from "../actions/auth-actions";
 import { useActionState } from "react";
 import { LoadingSpinner } from "@/components/spinner/spinner";
-import Link from "next/link";
 import SignIn from "@/components/auth-components/auth-components";
 import "../../styles/globals.css";
 
@@ -25,17 +24,11 @@ const Login = () => {
 
   return (
     <div className="w-full h-screen">
-      <div className="flex flex-row justify-between items-center p-5">
-        <Link href={"/"}>
-          <Logo />
-        </Link>
-        <button
-          className="btn w-40 px-8 py-3 mt-5 rounded-full font-semibold text-white"
-          onClick={toggleForm}
-        >
-          {isSignUpActive ? "Login" : "Sign up"}
-        </button>
-      </div>
+      <Nav
+        withLogout={false}
+        isSignUpActive={isSignUpActive}
+        toggle={toggleForm}
+      />
       <div className="flex justify-center mt-24 md:mt-52">
         <div className="max-w-md left-1/2 p-6">
           <h1 className="text-3xl font-bold text-center mb-9">

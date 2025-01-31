@@ -5,7 +5,7 @@ import Phone from "../public/phone.png";
 import Map from "../public/queensland.png";
 import Work from "../public/work.jpg";
 import "../styles/home.css";
-import Navbar from "@/components/header";
+import Navbar from "@/components/navbars/nav-home";
 import Link from "next/link";
 
 export const metadata = { page: "/" };
