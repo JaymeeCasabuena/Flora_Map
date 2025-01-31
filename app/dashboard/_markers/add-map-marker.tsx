@@ -2,6 +2,7 @@ import Image from "next/image";
 import Rock from "../../../public/IvyRock.webp";
 import Grass from "../../../public/grass.webp";
 import Ivy from "../../../public/Ivy.webp";
+import Shovel from "../../../public/shovel.png";
 import { APIProvider } from "@vis.gl/react-google-maps";
 import FileUploadForm from "../_file-upload/upload";
 import { AddressAutoComplete } from "../_map/address-autocomplete";
@@ -17,19 +18,28 @@ const AddMarkerForm = () => {
     <div className="form flex flex-col items-center justify-center h-54 py-10">
       <form
         action={action}
-        className="flex flex-col relative w-full max-w-lg bg-white rounded-2xl shadow-lg p-6 pt-48"
+        className="flex flex-col relative w-full max-w-lg bg-white rounded-2xl drop-shadow-xl p-6 pt-48"
       >
+        <Image
+          className="absolute -left-16 -top-12 w-52 h-48 rotate-[15deg] z-10"
+          src={Shovel}
+          alt="Shovel"
+        />
         <Image
           className="absolute left-0 top-0 w-full rounded-2xl"
           src={Grass}
-          alt="Leaf"
+          alt="Grass"
         />
         <Image
-          className="absolute -top-28 right-8 h-68 transform translate-x-1/2 rotate-[15deg]"
+          className="absolute -top-20 right-8 h-80 w-72 transform translate-x-1/2"
           src={Ivy}
-          alt="Leaf"
+          alt="Ivy"
         />
         {state?.message && <Alert>{state.message}</Alert>}
+        <h1 className="text-2xl text-green-950 font-bold p-2">
+          {" "}
+          Add new marker
+        </h1>
         <input
           type="text"
           name="name"
