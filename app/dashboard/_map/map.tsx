@@ -12,7 +12,11 @@ type MarkerType = {
   authorId: string | null;
 };
 
-const CustomMap = () => {
+type CustomMapProps = {
+  onMarkerClick: (marker: MarkerType) => void;
+};
+
+const CustomMap = ({ onMarkerClick }: CustomMapProps) => {
   const [markers, setMarkers] = useState<MarkerType[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -72,6 +76,7 @@ const CustomMap = () => {
                   url: "/tree-marker.svg",
                   scale: 0.075,
                 }}
+                onClick={() => onMarkerClick(marker)}
               />
             );
           })}
