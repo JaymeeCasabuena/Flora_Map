@@ -4,9 +4,21 @@ import Grass from "../../../public/grass.webp";
 import Ivy from "../../../public/Ivy.webp";
 import Seedling from "../../../public/seedling.png";
 
-const MarkerDetails = () => {
+type MarkerDetailsProps = {
+  marker: {
+    location: string | null;
+    id: string;
+    name: string;
+    note: string | null;
+    coord: string | null;
+    date: Date | null;
+    authorId: string | null;
+  } | null;
+};
+
+const MapMarkerDetails = ({ marker }: MarkerDetailsProps) => {
   return (
-    <div className="form flex flex-col items-center justify-center h-54 py-10">
+    <div className="flex flex-col items-center justify-center py-10">
       <div className="flex flex-col relative w-full max-w-lg bg-white rounded-2xl drop-shadow-xl p-6 pt-48">
         <Image
           className="absolute -left-16 -top-12 w-52 h-48 rotate-[15deg] z-10"
@@ -24,38 +36,28 @@ const MarkerDetails = () => {
           alt="Ivy"
         />
 
-        <h1 className="text-2xl text-green-950 font-bold p-2">
-          {" "}
-          Add new marker
-        </h1>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          className="w-full text-gray-400 p-3 mb-3 border rounded shadow-lg z-10"
-        />
-        <div className="mt-2 z-10"></div>
-        <input
-          className="w-full text-gray-400 p-3 mb-3 border shadow-lg rounded"
-          name="date"
-          type="date"
-          placeholder="Date"
-        />
-        <textarea
-          name="note"
-          placeholder="Write notes here"
-          className="w-full text-gray-400 p-3 mb-3 border shadow-lg rounded"
-        />
-        <button
-          type="submit"
-          className="btn self-end px-8 py-3 mt-5 rounded-full font-semibold text-white"
-        >
-          Submit
-        </button>
+        <div className="px-12">
+          <h1 className="text-4xl capitalize text-yellow-500 font-bold p-2 mb-5">
+            {marker?.name}
+          </h1>
+          <h1 className="text-base text-green-950 font-bold p-2 mb-5">
+            Location: {marker?.location}
+          </h1>
+          <h1 className="text-base max-h-36 overflow-y-auto text-green-950 font-bold p-2 mb-5">
+            Note: {marker?.note}
+          </h1>
+          <h1 className="text-base text-green-950 font-bold p-2 mb-10">
+            Date:{" "}
+            {marker && marker.date
+              ? new Date(marker.date).toDateString().split("T")[0]
+              : ""}
+          </h1>
+        </div>
+
         <Image className="absolute -left-10 -bottom-24" src={Rock} alt="Rock" />
       </div>
     </div>
   );
 };
 
-export default MarkerDetails;
+export default MapMarkerDetails;

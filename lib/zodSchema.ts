@@ -35,7 +35,10 @@ export const AddMarkerFormSchema = z.object({
     .string()
     .min(10, { message: "Location name must be at least 10 characters long." })
     .trim(),
-  note: z.string().optional(),
+  note: z
+    .string()
+    .max(500, { message: "Note must be 500 characters or fewer" })
+    .optional(),
   location: z.string().nonempty({ message: "Location is required." }),
   date: z.string().optional(),
 });
