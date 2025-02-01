@@ -23,6 +23,10 @@ const Dashboard = () => {
   const handleMarkerClick = (marker: MarkerType) => {
     setSelectedMarker(marker);
   };
+
+  const switchToForm = () => {
+    setSelectedMarker(null);
+  };
   return (
     <div className="dashboard flex flex-col">
       <Nav withLogout={true} />
@@ -34,7 +38,7 @@ const Dashboard = () => {
           {!selectedMarker ? (
             <AddMarkerForm />
           ) : (
-            <MapMarkerDetails marker={selectedMarker} />
+            <MapMarkerDetails marker={selectedMarker} buttonClick={switchToForm} />
           )}
         </div>
       </main>
