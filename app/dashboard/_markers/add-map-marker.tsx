@@ -35,10 +35,12 @@ const AddMarkerForm = () => {
           src={Ivy}
           alt="Ivy"
         />
-        {state?.message && <Alert>{state.message}</Alert>}
+        {state?.errors?.name && <Alert>{state.errors.name}</Alert>}
+        {state?.errors?.location && <Alert>{state.errors.location}</Alert>}
+        {state?.errors?.date && <Alert>{state.errors.date}</Alert>}
+        {state?.errors?.note && <Alert>{state.errors.note}</Alert>}
         <h1 className="text-2xl text-green-950 font-bold p-2">
-          {" "}
-          Add new marker
+          Add new map marker
         </h1>
         <input
           type="text"
