@@ -21,7 +21,7 @@ const AddMarkerForm = () => {
         className="flex flex-col relative w-full max-w-lg bg-white rounded-2xl drop-shadow-xl p-6 pt-48"
       >
         <Image
-          className="absolute -left-16 -top-12 w-52 h-48 rotate-[15deg] z-10"
+          className="absolute -left-12 -top-5 w-52 h-48 rotate-[15deg] z-10"
           src={Shovel}
           alt="Shovel"
         />
@@ -31,7 +31,7 @@ const AddMarkerForm = () => {
           alt="Grass"
         />
         <Image
-          className="absolute -top-20 right-8 h-80 w-72 transform translate-x-1/2"
+          className="absolute -top-14 right-12 h-80 w-72 transform translate-x-1/2"
           src={Ivy}
           alt="Ivy"
         />
@@ -40,7 +40,7 @@ const AddMarkerForm = () => {
         {state?.errors?.date && <Alert>{state.errors.date}</Alert>}
         {state?.errors?.note && <Alert>{state.errors.note}</Alert>}
         <h1 className="text-2xl text-green-950 font-bold p-2">
-          Add new map marker
+          Add a new map marker
         </h1>
         <input
           type="text"
@@ -73,7 +73,7 @@ const AddMarkerForm = () => {
         >
           Submit
         </button>
-        <Image className="absolute -left-10 -bottom-24" src={Rock} alt="Rock" />
+        <Image className="absolute -left-10 -bottom-14" src={Rock} alt="Rock" />
       </form>
     </div>
   );

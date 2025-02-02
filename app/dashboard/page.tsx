@@ -38,7 +38,10 @@ const Dashboard = () => {
           {!selectedMarker ? (
             <AddMarkerForm />
           ) : (
-            <MapMarkerDetails marker={selectedMarker} buttonClick={switchToForm} />
+            <MapMarkerDetails
+              marker={selectedMarker}
+              buttonClick={switchToForm}
+            />
           )}
         </div>
       </main>
