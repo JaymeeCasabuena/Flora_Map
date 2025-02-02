@@ -84,3 +84,22 @@ html {
 .footer {
   background-color: #171717;
 }
+
+.modal {
+  padding: 5px 15px;
+  margin: 15px;
+  border: 3px solid white;
+  border-radius: 0.3em;
+}
+
+.green {
+  background-color: rgb(75, 135, 71);
+  box-shadow: 0px 0px 0px 1px rgb(75, 135, 71),
+    inset 0px 0px 0px 1px rgb(75, 135, 71), 0px 2px 0px 2px rgb(85, 134, 82);
+}
+
+.red {
+  background-color: rgb(196, 58, 58);
+  box-shadow: 0px 0px 0px 1px rgb(196, 58, 58),
+    inset 0px 0px 0px 1px rgb(196, 58, 58), 0px 2px 0px 2px rgb(173, 81, 81);
+}
