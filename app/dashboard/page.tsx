@@ -31,10 +31,10 @@ const Dashboard = () => {
     <div className="dashboard flex flex-col">
       <Nav withLogout={true} />
       <main className="flex flex-row gap-7 w-full">
-        <div className="map w-2/3 ms-5">
+        <div className="map w-3/4 ms-5">
           <CustomMap onMarkerClick={handleMarkerClick} />
         </div>
-        <div className="details rounded-2xl w-1/3 mt-16 me-5">
+        <div className="details rounded-2xl w-1/4 mt-16 me-5">
           {!selectedMarker ? (
             <AddMarkerForm />
           ) : (

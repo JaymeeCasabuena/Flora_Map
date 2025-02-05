@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Rock from "../../../public/IvyRock.webp";
-import Grass from "../../../public/grass.webp";
 import Ivy from "../../../public/Ivy.webp";
-import Shovel from "../../../public/shovel.png";
 import { APIProvider } from "@vis.gl/react-google-maps";
 import FileUploadForm from "../_file-upload/upload";
 import { AddressAutoComplete } from "../_map/address-autocomplete";
@@ -18,30 +16,13 @@ const AddMarkerForm = () => {
     <div className="form flex flex-col items-center justify-center h-54 py-10">
       <form
         action={action}
-        className="flex flex-col relative w-full max-w-lg bg-white rounded-2xl drop-shadow-xl p-6 pt-48"
+        className="flex flex-col relative w-full max-w-lg rounded-2xl drop-shadow-xl p-6"
       >
-        <Image
-          className="absolute -left-12 -top-5 w-52 h-48 rotate-[15deg] z-10"
-          src={Shovel}
-          alt="Shovel"
-        />
-        <Image
-          className="absolute left-0 top-0 w-full rounded-2xl"
-          src={Grass}
-          alt="Grass"
-        />
-        <Image
-          className="absolute -top-14 right-12 h-80 w-72 transform translate-x-1/2"
-          src={Ivy}
-          alt="Ivy"
-        />
         {state?.errors?.name && <Alert>{state.errors.name}</Alert>}
         {state?.errors?.location && <Alert>{state.errors.location}</Alert>}
         {state?.errors?.date && <Alert>{state.errors.date}</Alert>}
         {state?.errors?.note && <Alert>{state.errors.note}</Alert>}
-        <h1 className="text-2xl text-green-950 font-bold p-2">
-          Add a new map marker
-        </h1>
+        <h1 className="text-2xl font-bold p-2 mb-5">Add a new map marker</h1>
         <input
           type="text"
           name="name"
@@ -69,11 +50,10 @@ const AddMarkerForm = () => {
         <FileUploadForm></FileUploadForm>
         <button
           type="submit"
-          className="btn self-end px-8 py-3 mt-5 rounded-full font-semibold text-white"
+          className="self-end px-8 py-3 mt-5 rounded-full font-semibold text-black"
         >
           Submit
         </button>
-        <Image className="absolute -left-10 -bottom-14" src={Rock} alt="Rock" />
       </form>
     </div>
   );
