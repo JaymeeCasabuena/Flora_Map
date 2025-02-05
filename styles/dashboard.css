@@ -1,3 +1,31 @@
 .dashboard {
   background-color: #a2daf2;
 }
+
+.form {
+  padding: 5px 15px;
+  margin: 15px;
+  border: 3px solid white;
+  border-radius: 0.3em;
+  background-color: #1b631b;
+  box-shadow: 0px 0px 0px 1px #1b631b, inset 0px 0px 0px 1px #1b631b,
+    0px 2px 0px 2px #1b631b;
+}
+
+.details-container {
+  padding: 5px 15px;
+  margin: 15px;
+  border: 3px solid white;
+  border-radius: 0.3em;
+  background-color: #f4f1bb;
+  box-shadow: 0px 0px 0px 1px #f4f1bb, inset 0px 0px 0px 1px #f4f1bb,
+    0px 2px 0px 2px #f4f1bb;
+}
+
+button {
+  background-color: white;
+}
+button:hover {
+  background-color: #ffc505;
+  color: #1b631b;
+}
