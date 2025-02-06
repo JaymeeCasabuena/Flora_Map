@@ -21,6 +21,11 @@ html {
   overflow-x: hidden;
 }
 
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
 ::-webkit-scrollbar {
   width: 0.5em;
 }

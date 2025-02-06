@@ -56,7 +56,7 @@ const AddMarkerForm = () => {
         <FileUploadForm></FileUploadForm>
         <button
           type="submit"
-          className="self-end px-8 py-3 mt-5 rounded-full font-semibold text-black"
+          className="btn self-end px-8 py-3 mt-5 rounded-full font-semibold text-black"
         >
           Submit
         </button>
