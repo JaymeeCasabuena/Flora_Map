@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Rock from "../../../public/IvyRock.webp";
-import Ivy from "../../../public/Ivy.webp";
+import Pin from "../../../public/pin.png";
 import { APIProvider } from "@vis.gl/react-google-maps";
 import FileUploadForm from "../_file-upload/upload";
 import { AddressAutoComplete } from "../_map/address-autocomplete";
@@ -13,21 +12,28 @@ const AddMarkerForm = () => {
   const [state, action, pending] = useActionState(addMarker, undefined);
 
   return (
-    <div className="form flex flex-col items-center justify-center h-54 py-10">
+    <div className="form flex flex-col items-center justify-center h-54 py-10 shadow-xl">
       <form
         action={action}
-        className="flex flex-col relative w-full max-w-lg rounded-2xl drop-shadow-xl p-6"
+        className="flex flex-col relative w-full max-w-lg rounded-2xl p-6"
       >
+        <Image
+          className="absolute -top-3 right-4 w-20 transform translate-x-1/2"
+          src={Pin}
+          alt="Pin"
+        />
         {state?.errors?.name && <Alert>{state.errors.name}</Alert>}
         {state?.errors?.location && <Alert>{state.errors.location}</Alert>}
         {state?.errors?.date && <Alert>{state.errors.date}</Alert>}
         {state?.errors?.note && <Alert>{state.errors.note}</Alert>}
-        <h1 className="text-2xl font-bold p-2 mb-5">Add a new map marker</h1>
+        <h1 className="text-lg text-black font-bold p-2 mb-5">
+          Add a new map marker
+        </h1>
         <input
           type="text"
           name="name"
           placeholder="Name"
-          className="w-full text-gray-400 p-3 mb-3 border rounded shadow-lg z-10"
+          className="w-full text-gray-400 p-2 text-sm mb-3 border rounded shadow-lg z-10"
         />
         <div className="mt-2 z-10">
           <APIProvider
@@ -37,7 +43,7 @@ const AddMarkerForm = () => {
           </APIProvider>
         </div>
         <input
-          className="w-full text-gray-400 p-3 mb-3 border shadow-lg rounded"
+          className="w-full text-gray-400 p-2 text-sm mb-3 border shadow-lg rounded"
           name="date"
           type="date"
           placeholder="Date"
@@ -45,7 +51,7 @@ const AddMarkerForm = () => {
         <textarea
           name="note"
           placeholder="Write notes here"
-          className="w-full text-gray-400 p-3 mb-3 border shadow-lg rounded"
+          className="w-full text-gray-400 p-2 text-sm mb-3 border shadow-lg rounded"
         />
         <FileUploadForm></FileUploadForm>
         <button

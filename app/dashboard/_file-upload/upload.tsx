@@ -21,7 +21,7 @@ export default function FileUploadForm() {
 
   return (
     <div className="flex flex-col items-center justify-center p-4 rounded-lg">
-      <label className="relative w-64 h-32 flex flex-col items-center justify-center bg-white text-blue-700 rounded-lg shadow-lg border border-green-500 cursor-pointer hover:bg-yellow-500">
+      <label className="relative w-48 h-32 flex flex-col items-center justify-center bg-white text-gray-700 rounded-lg shadow-lg border border-green-500 cursor-pointer hover:bg-yellow-500">
         {filePreview ? (
           <>
             {/* Remove Button */}
@@ -36,7 +36,7 @@ export default function FileUploadForm() {
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={2}
-                stroke="currentColor"
+                stroke="gray"
                 className="w-5 h-5"
               >
                 <path

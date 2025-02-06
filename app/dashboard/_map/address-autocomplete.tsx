@@ -40,7 +40,7 @@ export const AddressAutoComplete = () => {
     <div className="autocomplete-container">
       <input
         name="location"
-        className="w-full text-gray-400 p-3 mb-3 border shadow-lg rounded"
+        className="w-full text-gray-400 p-2 text-sm mb-3 border shadow-lg rounded"
         ref={inputRef}
         placeholder="Search for a place"
       />

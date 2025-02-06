@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Rock from "../../../public/IvyRock.webp";
-import Ivy from "../../../public/Ivy.webp";
+import Pin from "../../../public/pin.png";
 
 type MarkerDetailsProps = {
   marker: {
@@ -17,18 +16,23 @@ type MarkerDetailsProps = {
 
 const MapMarkerDetails = ({ marker, buttonClick }: MarkerDetailsProps) => {
   return (
-    <div className="details-container flex flex-col items-center justify-center h-54 rounded-2xl drop-shadow-xl">
-      <div className="flex flex-col mt-10">
-        <h1 className="text-3xl capitalize text-green-900 font-bold p-2 mb-5">
+    <div className="form flex flex-col relative items-center justify-center h-54 rounded-2xl shadow-xl">
+      <Image
+        className="absolute -top-2 right-8 w-20 transform translate-x-1/2"
+        src={Pin}
+        alt="Pin"
+      />
+      <div className="flex flex-col mt-7">
+        <h1 className="text-lg capitalize text-green-900 font-bold p-2 mb-3">
           {marker?.name}
         </h1>
-        <h1 className="text-base text-black p-2 mb-5">
+        <h1 className="text-sm text-black p-2 mb-5">
           Location: {marker?.location}
         </h1>
-        <h1 className="text-base max-h-36 overflow-y-auto text-black p-2 mb-5">
+        <h1 className="text-sm max-h-36 overflow-y-auto text-black  bg-white rounded-2xl p-4 mb-5">
           Note: {marker?.note}
         </h1>
-        <h1 className="text-base text-black p-2 mb-10">
+        <h1 className="text-sm text-black p-2 mb-10">
           Date:{" "}
           {marker && marker.date
             ? new Date(marker.date).toDateString().split("T")[0]

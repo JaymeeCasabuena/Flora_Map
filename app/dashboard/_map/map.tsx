@@ -26,8 +26,8 @@ const CustomMap = ({ onMarkerClick }: CustomMapProps) => {
   };
 
   const defaultStyle = {
-    width: "65vw",
-    height: "100vh",
+    width: "40vw",
+    height: "80vh",
     borderRadius: "20px",
     overflow: "hidden",
   };
