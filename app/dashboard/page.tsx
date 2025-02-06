@@ -5,6 +5,7 @@ import Nav from "@/components/navbars/nav";
 import CustomMap from "@/app/dashboard/_map/map";
 import AddMarkerForm from "@/app/dashboard/_markers/add-map-marker";
 import MapMarkerDetails from "./_markers/map-marker-details";
+import Search from "./_search/search";
 import "../../styles//dashboard.css";
 
 type MarkerType = {
@@ -34,7 +35,7 @@ const Dashboard = () => {
         <div className="map ms-5">
           <CustomMap onMarkerClick={handleMarkerClick} />
         </div>
-        <div className="details rounded-2xl w-1/4 mt-16 me-5">
+        <div className="flex flex-col w-1/4">
           {!selectedMarker ? (
             <AddMarkerForm />
           ) : (
@@ -43,6 +44,7 @@ const Dashboard = () => {
               buttonClick={switchToForm}
             />
           )}
+          <Search />
         </div>
       </main>
     </div>
