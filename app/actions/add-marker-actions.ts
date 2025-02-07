@@ -20,7 +20,6 @@ export async function addMarker(state: AddMarkerFormState, formData: FormData) {
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      success: false,
     };
   }
 
