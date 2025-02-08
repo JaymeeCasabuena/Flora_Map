@@ -1,5 +1,11 @@
-import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
-import { useEffect, useState } from "react";
+import {
+  APIProvider,
+  InfoWindow,
+  Map,
+  Marker,
+  useMarkerRef,
+} from "@vis.gl/react-google-maps";
+import { useEffect, useState, useCallback } from "react";
 import { LoadingSpinner } from "@/components/spinner/spinner";
 
 type MarkerType = {
@@ -19,6 +25,10 @@ type CustomMapProps = {
 const CustomMap = ({ onMarkerClick }: CustomMapProps) => {
   const [markers, setMarkers] = useState<MarkerType[]>([]);
   const [loading, setLoading] = useState(true);
+  // `markerRef` and `marker` are needed to establish the connection between
+  // the marker and infowindow
+  const [markerRef, onHoverMarker] = useMarkerRef();
+  const [infoWindowShown, setInfoWindowShown] = useState(false);
 
   const center = {
     lat: -27.41967,
@@ -45,6 +55,13 @@ const CustomMap = ({ onMarkerClick }: CustomMapProps) => {
     fetchMarkers();
   }, []);
 
+  const handleMarkerHover = useCallback(
+    () => setInfoWindowShown((isShown) => !isShown),
+    []
+  );
+
+  const handleClose = useCallback(() => setInfoWindowShown(false), []);
+
   return (
     <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string}>
       {loading ? (
@@ -69,15 +86,26 @@ const CustomMap = ({ onMarkerClick }: CustomMapProps) => {
             const [lat, lng] = marker.coord.split(",").map(Number);
 
             return (
-              <Marker
-                key={i}
-                position={{ lat, lng }}
-                icon={{
-                  url: "/tree-marker.svg",
-                  scale: 0.075,
-                }}
-                onClick={() => onMarkerClick(marker)}
-              />
+              <>
+                <Marker
+                  ref={markerRef}
+                  key={i}
+                  position={{ lat, lng }}
+                  icon={{
+                    url: "/tree-marker.svg",
+                    scale: 0.075,
+                  }}
+                  onClick={() => onMarkerClick(marker)}
+                  onMouseOver={handleMarkerHover}
+                />
+
+                {infoWindowShown && (
+                  <InfoWindow
+                    anchor={onHoverMarker}
+                    onCloseClick={handleClose}
+                  ></InfoWindow>
+                )}
+              </>
             );
           })}
         </Map>
