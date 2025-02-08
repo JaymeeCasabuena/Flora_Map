@@ -101,9 +101,15 @@ const CustomMap = ({ onMarkerClick }: CustomMapProps) => {
 
                 {infoWindowShown && (
                   <InfoWindow
+                    className="flex flex-row"
                     anchor={onHoverMarker}
                     onCloseClick={handleClose}
-                  ></InfoWindow>
+                    minWidth={50}
+                  >
+                    <h5 className="text-black">
+                      Click to view map marker details
+                    </h5>
+                  </InfoWindow>
                 )}
               </>
             );
