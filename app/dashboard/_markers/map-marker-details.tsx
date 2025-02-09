@@ -23,13 +23,13 @@ const MapMarkerDetails = ({ marker, buttonClick }: MarkerDetailsProps) => {
         alt="Pin"
       />
       <div className="flex flex-col mt-7">
-        <h1 className="text-lg capitalize text-green-900 font-bold p-2 mb-3">
+        <h1 className="max-w-64 break-words text-lg capitalize text-green-900 font-bold p-2 mb-3">
           {marker?.name}
         </h1>
         <h1 className="text-sm text-black p-2 mb-5">
           Location: {marker?.location}
         </h1>
-        <h1 className="text-sm max-h-36 overflow-y-auto text-black  bg-white rounded-2xl p-4 mb-5">
+        <h1 className="text-sm max-h-36 overflow-y-auto text-black bg-white rounded-2xl p-4 mb-5">
           Note: {marker?.note}
         </h1>
         <h1 className="text-sm text-black p-2 mb-10">
