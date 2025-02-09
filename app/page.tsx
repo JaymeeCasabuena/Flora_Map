@@ -103,7 +103,7 @@ export default function Home() {
         </div>
         <div className="contact flex flex-row w-full h-screen" id="contact">
           {/* Form Section */}
-          <div className="form flex flex-col md:w-1/2 text-white justify-center px-8 py-12">
+          <div className="flex flex-col md:w-1/2 text-white justify-center px-8 py-12">
             <h2 className="text-2xl md:text-4xl font-semibold mb-4">
               {"Let's work together"}
             </h2>

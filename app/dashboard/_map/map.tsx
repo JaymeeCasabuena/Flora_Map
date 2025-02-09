@@ -3,7 +3,6 @@ import {
   InfoWindow,
   Map,
   Marker,
-  useMarkerRef,
 } from "@vis.gl/react-google-maps";
 import { useEffect, useState, useCallback } from "react";
 import { LoadingSpinner } from "@/components/spinner/spinner";
@@ -27,7 +26,11 @@ const CustomMap = ({ onMarkerClick }: CustomMapProps) => {
   const [loading, setLoading] = useState(true);
   // `markerRef` and `marker` are needed to establish the connection between
   // the marker and infowindow
-  const [markerRef, onHoverMarker] = useMarkerRef();
+  const [hoveredMarker, setHoveredMarker] = useState<{
+    lat: number;
+    lng: number;
+    marker: MarkerType;
+  } | null>(null);
   const [infoWindowShown, setInfoWindowShown] = useState(false);
 
   const center = {
@@ -56,11 +59,16 @@ const CustomMap = ({ onMarkerClick }: CustomMapProps) => {
   }, []);
 
   const handleMarkerHover = useCallback(
-    () => setInfoWindowShown((isShown) => !isShown),
+    (lat: number, lng: number, marker: MarkerType) => {
+      setHoveredMarker({ lat, lng, marker }),
+        setInfoWindowShown((isShown) => !isShown);
+    },
     []
   );
 
-  const handleClose = useCallback(() => setInfoWindowShown(false), []);
+  const handleMarkerLeave = useCallback(() => {
+    setInfoWindowShown(false);
+  }, []);
 
   return (
     <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string}>
@@ -88,32 +96,38 @@ const CustomMap = ({ onMarkerClick }: CustomMapProps) => {
             return (
               <>
                 <Marker
-                  ref={markerRef}
-                  key={i}
+                  key={marker.id}
                   position={{ lat, lng }}
                   icon={{
                     url: "/tree-marker.svg",
                     scale: 0.075,
                   }}
                   onClick={() => onMarkerClick(marker)}
-                  onMouseOver={handleMarkerHover}
+                  onMouseOver={() => handleMarkerHover(lat, lng, marker)}
                 />
-
-                {infoWindowShown && (
-                  <InfoWindow
-                    className="flex flex-row"
-                    anchor={onHoverMarker}
-                    onCloseClick={handleClose}
-                    minWidth={50}
-                  >
-                    <h5 className="text-black">
-                      Click to view map marker details
-                    </h5>
-                  </InfoWindow>
-                )}
               </>
             );
           })}
+          {hoveredMarker && (
+            <InfoWindow
+              className="flex flex-row"
+              position={{ lat: hoveredMarker.lat, lng: hoveredMarker.lng }}
+              onCloseClick={handleMarkerLeave}
+              minWidth={50}
+            >
+              <div
+                className="flex flex-col justify-center items-center text-black p-2 mb-2"
+                onClick={() => onMarkerClick(hoveredMarker?.marker)}
+              >
+                <h5 className="text-sm font-bold w-44 truncate">
+                  {hoveredMarker?.marker.name}
+                </h5>
+                <h5 className="italic mt-2 p-2">
+                  Click icon to view map marker details
+                </h5>
+              </div>
+            </InfoWindow>
+          )}
         </Map>
       )}
     </APIProvider>
