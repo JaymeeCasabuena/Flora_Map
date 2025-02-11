@@ -43,7 +43,7 @@ const Login = () => {
               {registerState?.errors?.email && (
                 <Alert>{registerState.errors.email}</Alert>
               )}
-              {registerState?.errors?.email && (
+              {registerState?.errors?.password && (
                 <Alert>
                   {registerState?.errors?.password
                     ?.map((error, i) => error)
@@ -83,7 +83,7 @@ const Login = () => {
               {loginState?.errors?.email && (
                 <Alert>{loginState.errors.email}</Alert>
               )}
-              {loginState?.errors?.email && (
+              {loginState?.errors?.password && (
                 <Alert>
                   {loginState?.errors?.password
                     ?.map((error, i) => error)
