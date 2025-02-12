@@ -10,6 +10,7 @@ type MarkerDetailsProps = {
     coord: string | null;
     date: Date | null;
     authorId: string | null;
+    images?: { url: string }[] | null;
   } | null;
   buttonClick: () => void;
 };
@@ -38,6 +39,15 @@ const MapMarkerDetails = ({ marker, buttonClick }: MarkerDetailsProps) => {
             ? new Date(marker.date).toDateString().split("T")[0]
             : ""}
         </h1>
+        {marker?.images && marker.images.length > 0 && (
+          <Image
+            className="absolute -top-2 right-8 w-20 transform translate-x-1/2"
+            src={marker.images[0].url}
+            alt="Marker Image"
+            width={40}
+            height={40}
+          />
+        )}
         <button
           onClick={() => buttonClick()}
           className="btn self-end px-8 py-3 mt-5 rounded-full font-semibold text-white mb-10"

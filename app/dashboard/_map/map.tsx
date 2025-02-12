@@ -15,6 +15,7 @@ type MarkerType = {
   coord: string | null;
   date: Date | null;
   authorId: string | null;
+  images?: { url: string }[] | null;
 };
 
 type CustomMapProps = {

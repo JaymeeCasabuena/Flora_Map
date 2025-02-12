@@ -16,6 +16,7 @@ type MarkerType = {
   coord: string | null;
   date: Date | null;
   authorId: string | null;
+  images?: { url: string }[] | null;
 };
 
 const Dashboard = () => {
@@ -28,6 +29,7 @@ const Dashboard = () => {
   const switchToForm = () => {
     setSelectedMarker(null);
   };
+
   return (
     <div className="dashboard flex flex-col justify-center pb-10">
       <Nav withLogout={true} />
