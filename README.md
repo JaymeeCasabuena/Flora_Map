@@ -1,3 +1,11 @@
+# Pollinate: Document your tree planting experiences
+
+**Pollinate** is a web application that enables users to save locations and document their tree planting experiences. Features include an interactive map for plotting coordinates, detailed plant entry with images and notes, secure
+user authentication, and a searchable database for managing entries.
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
